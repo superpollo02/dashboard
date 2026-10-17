@@ -1,0 +1,62 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
+import { AlertCircleIcon } from "@/assets/icons/AlertCircleIcon";
+import { CheckCircleIcon } from "@/assets/icons/CheckCircleIcon";
+import { InfoCircleIcon } from "@/assets/icons/InfoCircleIcon";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/common/shadcn/alert";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/common/shadcn/card";
+
+/**
+ * Showcase of alert variants: informational (default),
+ * destructive, and success with icon, title, and description.
+ *
+ * @component
+ */
+export const AlertsUI = () => {
+  const t = useTranslations("uiElements");
+
+  return (
+    <Card id="alerts">
+      <CardHeader variant="divider">
+        <CardTitle>{t("alerts")}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-col gap-6">
+          <Alert>
+            <InfoCircleIcon className="h-4 w-4" />
+            <AlertTitle>Information</AlertTitle>
+            <AlertDescription>
+              This is an informational alert using the default variant from
+              Shadcn.
+            </AlertDescription>
+          </Alert>
+          <Alert variant="destructive">
+            <AlertCircleIcon className="h-4 w-4" />
+            <AlertTitle>Error</AlertTitle>
+            <AlertDescription>
+              This is a destructive alert indicating an error or warning.
+            </AlertDescription>
+          </Alert>
+          <Alert variant="success">
+            <CheckCircleIcon className="h-4 w-4" />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription>
+              Your changes have been saved successfully.
+            </AlertDescription>
+          </Alert>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
